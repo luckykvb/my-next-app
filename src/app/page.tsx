@@ -3,6 +3,17 @@
 const message = "Hello, this is my variable!";
 
 export default function Home() {
+  const mathsteps = require('mathsteps');
+
+const steps = mathsteps.simplifyExpression('2x + 2x + x + x');
+
+steps.forEach((step:any) => {
+	console.log("before change: " + step.oldNode.toString());   // before change: 2 x + 2 x + x + x
+	console.log("change: " + step.changeType);                  // change: ADD_POLYNOMIAL_TERMS
+	console.log("after change: " + step.newNode.toString());    // after change: 6 x
+	console.log("# of substeps: " + step.substeps.length);      // # of substeps: 3
+});
+
   return (
     // <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
     //   <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
